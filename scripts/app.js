@@ -56,7 +56,7 @@ const relPath = async () => {
     const result = await configFile.path;
     confElem.innerText = JSON.stringify(result);
     libElem.innerText = "." + result.libpath + "/data.json";
-    cssfElem.innerHTML = "<img src='" + result.csspath + "/qrcode_www.youtube.com.png' />";
+    cssfElem.innerHTML = "<img src='" + configFile.root +  result.csspath + "/qrcode_www.youtube.com.png' />";
 
     dir = result;
 };
