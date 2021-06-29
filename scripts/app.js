@@ -1,13 +1,30 @@
 class ConfigFile{
     constructor(){
+        //this.root = root === undefined || root.length <= 0 ? '.': root;
+
+        this.root = this.getRootFolder();
         this.path = this.getRelPath();
-        this.pathValue = '.';
         this.loaded = false;
+    }
+
+    getRootFolder(){
+        let dirs = location.pathname.split("/");
+        let rootDir = location.origin;
+
+        for (let index = 0; index < dirs.length - 1; index++) {
+            if(dirs[index].length > 0){
+                rootDir += "/" + dirs[index];            
+            }
+        }
+
+        console.log(dirs);
+        console.log(rootDir);
+        return rootDir;
     }
 
     async getRelPath(){
         let result = '.';
-        const configURL = location.origin+location.pathname + '/config.json';
+        const configURL = this.root + '/config.json';
 
         let prom = await fetch(configURL)
         .then(response => {
