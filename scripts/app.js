@@ -18,12 +18,7 @@ class ConfigFile{
                 throw ({'msg': response.status});
             }
         })
-        .then(data => JSON.stringify(data))
-        // .then(data => {
-        //     this.loaded = true;
-        //     this.pathValue = data.libpath;
-        //     console.log(data.libpath); 
-        // })
+        .then(data => data)
         .catch(error => {
             console.log('Configuration file not found (' + error.msg + ')! The module sound effects may be disabled! \nCheck the README documentation at https://github.com/Yuri-Un/minesweeper \n');
         });
@@ -42,10 +37,11 @@ const cssfElem = document.querySelector('.css-images');
 const configFile = new ConfigFile();
 const relPath = async () => {
     const result = await configFile.path;
-    confElem.innerText = result;
-    dir = result;
+    confElem.innerText = JSON.stringify(result);
+    libElem.innerText = "." + result.libpath + "/data.json";
+    cssfElem.innerHTML = "<img src='" + result.csspath + "/qrcode_www.youtube.com.png' />";
 
-    console.log(result);
+    dir = result;
 };
 
 relPath();

@@ -6,7 +6,8 @@
 
 div{
     width:80%;
-    height:100px;
+    height:auto;
+    min-height: 100px;
     padding:10px;
     margin: 10px auto;
 
