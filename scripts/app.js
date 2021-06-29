@@ -7,7 +7,7 @@ class ConfigFile{
 
     async getRelPath(){
         let result = '.';
-        const configURL = location.origin + '/config.json';
+        const configURL = location.origin+location.pathname + '/config.json';
 
         let prom = await fetch(configURL)
         .then(response => {
