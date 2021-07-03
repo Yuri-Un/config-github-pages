@@ -1,7 +1,5 @@
 class ConfigFile{
     constructor(){
-        //this.root = root === undefined || root.length <= 0 ? '.': root;
-
         this.root = this.getRootFolder();
         this.path = this.getRelPath();
         this.loaded = false;
@@ -45,7 +43,6 @@ class ConfigFile{
 }
 
 //Vars
-let dir = '.'
 const confElem = document.querySelector('.config-file');
 const libElem = document.querySelector('.lib-json');
 const cssfElem = document.querySelector('.css-images');
@@ -57,12 +54,6 @@ const relPath = async () => {
     confElem.innerText = JSON.stringify(result);
     libElem.innerText = "." + result.libpath + "/data.json";
     cssfElem.innerHTML = "<img src='" + configFile.root +  result.csspath + "/qrcode_www.youtube.com.png' />";
-
-    dir = result;
 };
 
 relPath();
-
-setTimeout(() => {
-    console.log(dir)
-}, 500);
